@@ -7,6 +7,7 @@ public class CreateForm {
     }
 
     //おそらくここに何かが足りないと思います。
+    // 練習のコメント
 
     public void setName(String name) {
         this.name = name;
