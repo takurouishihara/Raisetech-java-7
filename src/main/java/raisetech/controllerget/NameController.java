@@ -1,5 +1,5 @@
-package RaiseTech.ControllerGet;
-
+package raisetech.controllerget;
+//package RaiseTech.ControllerGet;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +15,8 @@ public  class NameController {
         return List.of("koyama", "tanaka");
     }
 
-
     @PostMapping("/names")
-    public ResponseEntity<String> create(@RequestBody CreateForm form) {
+    public ResponseEntity<String> create(@RequestBody UpdateForm form) {
         // 登録処理は省略
 
         URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
@@ -27,15 +26,18 @@ public  class NameController {
         return ResponseEntity.created(url).body("name successfully created");
     }
 
-    @PatchMapping("/names")
-    public ResponseEntity<Map<String, String>> update(@RequestBody CreateForm form) {
+    @PatchMapping("/names/{id}")
+    public ResponseEntity<Map<String, String>> update(@PathVariable("id") int id, @RequestBody UpdateForm form) {
         // 更新処理は省略
         return ResponseEntity.ok(Map.of("message", "name successfully updated"));
     }
 
-    @DeleteMapping("/names")
-    public ResponseEntity<Map<String, String>> delete(@RequestBody CreateForm form) {
-        // 更新処理は省略
+    @DeleteMapping("/names/{id}")
+    public ResponseEntity<Map<String, String>> delete(@PathVariable("id") int id) {
+      // 更新処理は省略
         return ResponseEntity.ok(Map.of("message", "name successfully delete"));
+        //@DeleteMapping("/names/{id}")
+        //    public ResponseEntity<Map<String, String>> delete(@PathVariable("id") int id) {
+        //        return ResponseEntity.ok(Map.of("message", "name successfully deleted"));
     }
 }

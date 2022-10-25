@@ -1,4 +1,4 @@
-package RaiseTech.ControllerGet;
+package raisetech.controllerget;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

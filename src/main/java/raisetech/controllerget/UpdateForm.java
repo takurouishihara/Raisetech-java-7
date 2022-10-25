@@ -1,15 +1,16 @@
-package RaiseTech.ControllerGet;
+package raisetech.controllerget;
 
-public class CreateForm {
+public class UpdateForm {
     private String name;
     public String getName() {
         return name;
     }
 
-    //おそらくここに何かが足りないと思います。
-    // 練習のコメント
+
 
     public void setName(String name) {
         this.name = name;
     }
 }
+
+
