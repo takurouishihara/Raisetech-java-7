@@ -1,16 +1,23 @@
 package raisetech.controllerget;
 
-import org.intellij.lang.annotations.Pattern;
+import org.hibernate.validator.constraints.Length;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
 public class UpdateForm {
 
-    private String name;
 
+    @NotBlank
     @Pattern(regexp = "^[0-9]{16}$")
     private String myNumber;
-    public UpdateForm(String name, String myNumber) {
-        this.name = name;
-        this.myNumber = myNumber;
+
+    public String getMyNumber() {
+        return myNumber;
     }
 
+    public void setMyNumber(String myNumber) {
+
+        this.myNumber = myNumber;
+    }
 }

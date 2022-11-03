@@ -1,40 +1,43 @@
 package raisetech.controllerget;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+import javax.validation.constraints.Pattern;
 import java.net.URI;
-import java.util.List;
 import java.util.Map;
-
 import static java.util.Map.of;
 
 
 @RestController
+@Validated
 public  class NameController {
 
+    @GetMapping("/numbers")
+    public ResponseEntity<Map<String, String>> getName(@RequestParam(value = "name", defaultValue = "name") String name, @RequestParam @Pattern(regexp = "^[0-9]{16}$") String myNumber) {
 
-    @GetMapping("/names")
-    public  NameResponse nameResponse(@RequestParam(value = "name", defaultValue = "name") String name, @RequestParam(value = "myNumber", defaultValue = "0000000000000000") String myNumber) {
-        return (NameResponse) Map.of("name", name, "myNumber", myNumber);
-        //  return new NameResponse(String.format(name), String.format(myNumber));
+        return ResponseEntity.ok(Map.of("message", name + " " + myNumber));
+
     }
 
-    @PostMapping("/names")
-    public ResponseEntity<String> create(@RequestBody UpdateForm form) {
+    @PostMapping("/numbers")
+    public ResponseEntity<Map<String, String>> create(@RequestBody @Validated UpdateForm form) {
         URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
+                .path("/name/id")
                 .build()
                 .toUri();
-        return ResponseEntity.created(url).body("name successfully created");
+        return ResponseEntity.created(url).body(Map.of("message", "マイナンバーの登録確認"));
     }
 
-    @PatchMapping("/names/{id}")
-    public ResponseEntity<Map<String, String>> update(@PathVariable("id") int id, @RequestBody UpdateForm form) {
-        return ResponseEntity.ok(of("message", "name successfully updated"));
+
+    @PatchMapping("/numbers/{id}")
+    public ResponseEntity<Map<String, String>> update(@PathVariable("id") int id, @RequestBody @Validated UpdateForm form) {
+        return ResponseEntity.ok(of("message", "マイナンバーの更新確認"));
     }
 
-    @DeleteMapping("/names/{id}")
+    @DeleteMapping("/numbers/{id}")
     public ResponseEntity<Map<String, String>> delete(@PathVariable("id") int id) {
-        return ResponseEntity.ok(of("message", "name successfully delete"));
+        return ResponseEntity.ok(of("message", "マイナンバーデータの削除"));
     }
 }
