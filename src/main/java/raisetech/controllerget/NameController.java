@@ -9,7 +9,6 @@ import java.net.URI;
 import java.util.Map;
 import static java.util.Map.of;
 
-
 @RestController
 @Validated
 public  class NameController {
@@ -41,3 +40,4 @@ public  class NameController {
         return ResponseEntity.ok(of("message", "マイナンバーデータの削除"));
     }
 }
+

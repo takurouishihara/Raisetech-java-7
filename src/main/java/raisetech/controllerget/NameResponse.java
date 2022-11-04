@@ -1,11 +1,9 @@
 package raisetech.controllerget;
 
-import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 public class NameResponse {
-
 
     @NotBlank
     @Pattern(regexp = "^[0-9]{16}$")
