@@ -3,7 +3,7 @@ package raisetech.controllerget;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-public class NameResponse {
+public class  MyNumberResponse {
 
     @NotBlank
     @Pattern(regexp = "^[0-9]{16}$")
@@ -16,5 +16,6 @@ public class NameResponse {
     public void setMyNumber(String myNumber) {
 
         this.myNumber = myNumber;
+
     }
 }

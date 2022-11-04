@@ -11,16 +11,16 @@ import static java.util.Map.of;
 
 @RestController
 @Validated
-public  class NameController {
+public  class MyNumberController {
 
-    @GetMapping("/numbers")
+    @GetMapping("/mynumbers")
     public ResponseEntity<Map<String, String>> getName(@RequestParam(value = "name", defaultValue = "name") String name, @RequestParam @Pattern(regexp = "^[0-9]{16}$") String myNumber) {
 
         return ResponseEntity.ok(Map.of("message", name + " " + myNumber));
 
     }
 
-    @PostMapping("/numbers")
+    @PostMapping("/mynumbers")
     public ResponseEntity<Map<String, String>> create(@RequestBody @Validated UpdateForm form) {
         URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
                 .path("/name/id")
@@ -30,12 +30,12 @@ public  class NameController {
     }
 
 
-    @PatchMapping("/numbers/{id}")
+    @PatchMapping("/mynumbers/{id}")
     public ResponseEntity<Map<String, String>> update(@PathVariable("id") int id, @RequestBody @Validated UpdateForm form) {
         return ResponseEntity.ok(of("message", "マイナンバーの更新確認"));
     }
 
-    @DeleteMapping("/numbers/{id}")
+    @DeleteMapping("/mynumbers/{id}")
     public ResponseEntity<Map<String, String>> delete(@PathVariable("id") int id) {
         return ResponseEntity.ok(of("message", "マイナンバーデータの削除"));
     }
