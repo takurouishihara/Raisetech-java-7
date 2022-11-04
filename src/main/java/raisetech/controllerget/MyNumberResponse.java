@@ -14,8 +14,6 @@ public class  MyNumberResponse {
     }
 
     public void setMyNumber(String myNumber) {
-
         this.myNumber = myNumber;
-
     }
 }

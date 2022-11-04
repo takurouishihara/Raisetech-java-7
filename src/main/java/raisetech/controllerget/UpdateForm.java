@@ -5,7 +5,6 @@ import javax.validation.constraints.Pattern;
 
 public class UpdateForm {
 
-
     @NotBlank
     @Pattern(regexp = "^[0-9]{16}$")
     private String myNumber;
@@ -15,7 +14,6 @@ public class UpdateForm {
     }
 
     public void setMyNumber(String myNumber) {
-
         this.myNumber = myNumber;
     }
 }

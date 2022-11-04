@@ -15,9 +15,7 @@ public  class MyNumberController {
 
     @GetMapping("/mynumbers")
     public ResponseEntity<Map<String, String>> getName(@RequestParam(value = "name", defaultValue = "name") String name, @RequestParam @Pattern(regexp = "^[0-9]{16}$") String myNumber) {
-
         return ResponseEntity.ok(Map.of("message", name + " " + myNumber));
-
     }
 
     @PostMapping("/mynumbers")
@@ -29,7 +27,6 @@ public  class MyNumberController {
         return ResponseEntity.created(url).body(Map.of("message", "マイナンバーの登録確認"));
     }
 
-
     @PatchMapping("/mynumbers/{id}")
     public ResponseEntity<Map<String, String>> update(@PathVariable("id") int id, @RequestBody @Validated UpdateForm form) {
         return ResponseEntity.ok(of("message", "マイナンバーの更新確認"));
@@ -40,4 +37,3 @@ public  class MyNumberController {
         return ResponseEntity.ok(of("message", "マイナンバーデータの削除"));
     }
 }
-
